@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::API
   before_action :underscore_params!
-  protect_from_forgery with: :null_session
+  rake db:drop db:create db:migrate db:seed
   respond_to :json
 
 
