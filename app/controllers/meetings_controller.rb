@@ -1,5 +1,5 @@
 class MeetingsController < ApplicationController
-  before_action :authenticate_request!
+  before_action :authenticate_user 
   before_action :set_meeting, only: [:show, :update, :destroy]
 
   # GET /meetings
@@ -11,6 +11,7 @@ class MeetingsController < ApplicationController
 
   # GET /meetings/1
   def show
+    # @meeting = current_user.meetings.find(params[:id])
     render json: @meeting
   end
 
@@ -42,11 +43,12 @@ class MeetingsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_meeting
-      @meeting = Meeting.find(params[:id])
+        @meeting = current_user.meetings.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def meeting_params
       params.require(:meeting).permit(:name, :start_time, :end_time, :user_id)
     end
+
 end
