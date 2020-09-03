@@ -6,13 +6,13 @@ class MeetingsController < ApplicationController
   def index
     @meetings = current_user.meetings.all
 
-    render json: @meetings
+    render json: MeetingSerializer.new(@meetings).serializable_hash
   end
 
   # GET /meetings/1
   def show
     # @meeting = current_user.meetings.find(params[:id])
-    render json: @meeting
+    render json: MeetingSerializer.new(@meeting).serializable_hash
   end
 
   # POST /meetings
@@ -20,7 +20,7 @@ class MeetingsController < ApplicationController
     @meeting = Meeting.new(meeting_params)
 
     if @meeting.save
-      render json: @meeting, status: :created, location: @meeting
+      render json: MeetingSerializer.new(@meeting).serializable_hash, status: :created, location: @meeting
     else
       render json: @meeting.errors, status: :unprocessable_entity
     end
@@ -29,7 +29,7 @@ class MeetingsController < ApplicationController
   # PATCH/PUT /meetings/1
   def update
     if @meeting.update(meeting_params)
-      render json: @meeting
+      render json: MeetingSerializer.new(@meeting).serializable_hash
     else
       render json: @meeting.errors, status: :unprocessable_entity
     end
