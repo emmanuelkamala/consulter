@@ -32,6 +32,29 @@ Consulter is a simple API that creates meeting appointment(s) with a consultant 
 using Postman. If you don't have Postman installed, then you can download it from this link: <a href="https://www.postman.com/downloads/">Postman</a>
 
 3. Once you download Postman and have it installed on your system, Open it up. Once open, you will see a link called
-Create a request. (see the image below)
+'Create a request'. (see the image below)
+
 ![screenshot](./app/docs/open.png)
 
+4. It will open a new tab to the right, now there are several steps to take as described from the image below:
+
+![screenshot](./app/docs/open.png)
+
+Follow the numbers: 
+ <ul start=1>
+ <li>Click the down arrow and select POST</li>
+ <li>Enter this URL: http://localhost:3000/api/v1/auth/signup</li>
+ <li>Make sure you choose 'Body'</li>
+ <li>Select JSON as your type</li>
+ <li>Choose 'raw'</li>
+ <li> Copy this code below and enter on the area numbered 6, and change the details to your own
+ 
+    {
+      "auth": {
+          "email": "emmanuel@gmail.com",
+          "password": "tanzania"
+      }
+    }
+</li>
+
+ </ul>
