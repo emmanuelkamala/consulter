@@ -86,6 +86,7 @@ Follow the numbers:
 To perform CRUD operations on your meetings, you have to sign in and start creating your data. This is how you do it:
 
 ## Getting All Your Meetings
+### GET action
 
 ![screenshot](./app/docs/signin.png)
 
@@ -98,4 +99,30 @@ From the Image:
 <li>Choose 'Bearer Token'</li>
 <li>On your right you will see a place written as Token, to its right paste the Key that you copied</li>
 <li>Then click send button at the top, and down below you will see and empy array sign. If you did it correctly, you will see that and its empty as there is no meetings created yet.</li>
+</ol>
+
+## Creating a Meeting
+### POST action
+
+Now that you are signed up, you can continue performing HTTP methods.
+
+![screenshot](./app/docs/create.png)
+
+From the Image:
+
+<ol start="1">
+<li>Change this place and choose a POST Action</li>
+<li>Enter this link: http://localhost:3000/api/v1/meetings</li>
+<li>Choose 'Body' as you are going to enter details of your meeting</li>
+<li>Down below, copy this code and change the details to suit your specific details
+      {
+          "meeting": {
+              "name": "Booking for a session with a consultant",
+              "start_time": "2020-09-05 13:00",
+              "end_time": "2020-09-05 13:45",
+              "user_id": "3"
+          }
+      }
+</li>
+<li>When you click the 'send' button, you will see here new meeting has been created with a 201 status message</li>
 </ol>
