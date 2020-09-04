@@ -67,6 +67,7 @@ Follow the numbers:
 <ul>
 <li>Where you entered the signup link, change it to this one http://localhost:3000/api/v1/auth/signin</li>
 <li>On number 6 where you entered your sign up details, now enter this code:
+
       {
           "auth": {
               "email": "emmanuel@yahoo.com",
