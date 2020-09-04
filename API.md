@@ -59,3 +59,42 @@ Follow the numbers:
 </li>
 
  </ol>
+
+...and once that is done, you will be signed up.
+
+5. To sign in, you simply follow almost similar steps as signing up but change the following below:
+
+<ul>
+<li>Where you entered the signup link, change it to this one http://localhost:3000/api/v1/auth/signin</li>
+<li>On number 6 where you entered your sign up details, now enter this code:
+      {
+          "auth": {
+              "email": "emmanuel@yahoo.com",
+              "password": "tanzania"
+          }
+      }
+
+  ...and just change the details to the one you used during sign up
+</li>
+<li>Once done click the blue button that says 'send'</li>
+<li>It will authenticate you and give you a token key. Copy that Key and move to the next step</li>
+</ul>
+
+# Actions
+
+To perform CRUD operations on your meetings, you have to sign in and start creating your data. This is how you do it:
+
+## Getting All Your Meetings
+
+![screenshot](./app/docs/signin.png)
+
+From the Image:
+
+<ol start="1">
+<li>Change this place and choose a GET Action</li>
+<li>Change the link to: http://localhost:3000/api/v1/meetings</li>
+<li>Choose 'Authorization' as you need to be authorized first by using the token Key that you copied</li>
+<li>Choose 'Bearer Token'</li>
+<li>On your right you will see a place written as Token, to its right paste the Key that you copied</li>
+<li>Then click send button at the top, and down below you will see and empy array sign. If you did it correctly, you will see that and its empty as there is no meetings created yet.</li>
+</ol>
