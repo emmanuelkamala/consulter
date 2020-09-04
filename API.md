@@ -38,7 +38,7 @@ using Postman. If you don't have Postman installed, then you can download it fro
 
 4. It will open a new tab to the right, now there are several steps to take as described from the image below:
 
-![screenshot](./app/docs/open.png)
+![screenshot](./app/docs/data.png)
 
 Follow the numbers: 
  <ol start="1">
