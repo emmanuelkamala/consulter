@@ -50,8 +50,9 @@ Follow the numbers:
  <li> Copy this code below and enter on the area numbered 6, and change the details to your own
  
     {
-      "auth": {
-          "email": "emmanuel@gmail.com",
+      "user": {
+          "email": "emmanuel@emmanuel.com",
+          "username": "ejoka",
           "password": "tanzania"
       }
     }
