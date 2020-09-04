@@ -41,7 +41,7 @@ using Postman. If you don't have Postman installed, then you can download it fro
 ![screenshot](./app/docs/open.png)
 
 Follow the numbers: 
- <ul start=1>
+ <ol start="1">
  <li>Click the down arrow and select POST</li>
  <li>Enter this URL: http://localhost:3000/api/v1/auth/signup</li>
  <li>Make sure you choose 'Body'</li>
@@ -57,4 +57,4 @@ Follow the numbers:
     }
 </li>
 
- </ul>
+ </ol>
