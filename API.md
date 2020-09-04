@@ -86,7 +86,7 @@ Follow the numbers:
 To perform CRUD operations on your meetings, you have to sign in and start creating your data. This is how you do it:
 
 ## Getting All Your Meetings
-### GET action
+### [GET] action
 
 ![screenshot](./app/docs/signin.png)
 
@@ -102,7 +102,7 @@ From the Image:
 </ol>
 
 ## Creating a Meeting
-### POST action
+### [POST] action
 
 Now that you are signed up, you can continue performing HTTP methods.
 
@@ -115,6 +115,7 @@ From the Image:
 <li>Enter this link: http://localhost:3000/api/v1/meetings</li>
 <li>Choose 'Body' as you are going to enter details of your meeting</li>
 <li>Down below, copy this code and change the details to suit your specific details
+
       {
           "meeting": {
               "name": "Booking for a session with a consultant",
@@ -123,6 +124,7 @@ From the Image:
               "user_id": "3"
           }
       }
+
 </li>
 <li>When you click the 'send' button, you will see here new meeting has been created with a 201 status message</li>
 </ol>
