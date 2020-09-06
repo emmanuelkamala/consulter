@@ -44,3 +44,4 @@ class Api::V1::MeetingsController < ApplicationController
       params.require(:meeting).permit(:name, :start_time, :end_time, :user_id)
     end
 end
+
