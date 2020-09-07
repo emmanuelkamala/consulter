@@ -23,7 +23,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'fast_jsonapi', '~> 1.5'
 gem 'figaro'
 gem 'jwt'
-gem "knock", github: "nsarno/knock", branch: "master"
+gem 'knock', github: 'nsarno/knock', branch: 'master'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
 gem 'rswag'
