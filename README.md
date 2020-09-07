@@ -2,6 +2,8 @@
 
 The project is based on an app to book an appointment with a consultant. A user can sign up and see selected dates and times for creating an appointment with the consultant. The user can then be able to edit, update dates and times and also delete an appointment. This is simply an API that can be used to create data for different users.
 
+![screenshot](./app/docs/ERD.png)
+
 
 ## Built With
 
