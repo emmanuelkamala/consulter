@@ -1,6 +1,6 @@
 class Api::V1::MeetingsController < ApplicationController
-  before_action :authenticate_user 
-  before_action :set_meeting, only: [:show, :update, :destroy]
+  before_action :authenticate_user
+  before_action :set_meeting, only: %i[show update destroy]
 
   def index
     @meetings = current_user.meetings.all
@@ -25,8 +25,7 @@ class Api::V1::MeetingsController < ApplicationController
     if @meeting.update(meeting_params)
       render json: MeetingSerializer.new(@meeting).serializable_hash
     else
-      render json: @meeting.errors, status: :unprocessable_entity
-            
+      render json: @meeting.errors, status: :unprocessable_entity  
     end
   end
 
@@ -36,12 +35,11 @@ class Api::V1::MeetingsController < ApplicationController
 
   private
 
-    def set_meeting
-        @meeting = current_user.meetings.find(params[:id])
-    end
+  def set_meeting
+    @meeting = current_user.meetings.find(params[:id])
+  end
 
-    def meeting_params
-      params.require(:meeting).permit(:name, :start_time, :end_time, :user_id)
-    end
+  def meeting_params
+    params.require(:meeting).permit(:name, :start_time, :end_time, :user_id)
+  end
 end
-
