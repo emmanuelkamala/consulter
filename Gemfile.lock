@@ -228,6 +228,7 @@ DEPENDENCIES
   byebug
   fast_jsonapi (~> 1.5)
   figaro
+  jwt
   knock
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)
