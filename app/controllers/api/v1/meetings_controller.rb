@@ -1,5 +1,4 @@
 class Api::V1::MeetingsController < ApplicationController
-  before_action :authenticate_user
   before_action :set_meeting, only: %i[show update destroy]
 
   def index
