@@ -3,10 +3,12 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users
       resources :meetings
-      scope '/auth' do
-        post '/signin', to: 'user_token#create'
-        post '/signup', to: 'users#create'
-      end
+      post '/signup', to: 'users#create'
     end
+  end
+
+  scope '/auth' do
+    post '/signin', to: 'user_token#create'
+    post '/signup', to: 'users#create'
   end
 end
