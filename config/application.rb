@@ -35,6 +35,5 @@ module Consulter
     config.api_only = true
 
     config.load_defaults 6.0 and config.autoloader = :classic
-    config.action_controller.default_protect_from_forgery = true
   end
 end
