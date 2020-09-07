@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Meeting, :type => :model do
+RSpec.describe Meeting do
   describe 'attributes' do
     it 'is valid with valid attributes' do
       meeting = Meeting.new(name: 'Social anxiety help',
