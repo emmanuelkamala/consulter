@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-  before_action :authenticate_V1_user, except: [:create]
+  before_action :authenticate_user, except: [:create]
   before_action :set_user, only: %i[show update destroy]
   before_action :require_admin, only: %i[index destroy]
 
