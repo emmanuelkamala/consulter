@@ -1,7 +1,6 @@
 GIT
   remote: https://github.com/nsarno/knock.git
-  revision: 9214cd027422df8dc31eb67c60032fbbf8fc100b
-  ref: 9214cd027422df8dc31eb67c60032fbbf8fc100b
+  revision: 37e403a7c6d44f585b56a086245e41566a8d6fe1
   branch: master
   specs:
     knock (2.2.0)
