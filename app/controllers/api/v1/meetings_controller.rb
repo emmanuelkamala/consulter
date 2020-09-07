@@ -25,7 +25,7 @@ class Api::V1::MeetingsController < ApplicationController
     if @meeting.update(meeting_params)
       render json: MeetingSerializer.new(@meeting).serializable_hash
     else
-      render json: @meeting.errors, status: :unprocessable_entity  
+      render json: @meeting.errors, status: :unprocessable_entity
     end
   end
 
