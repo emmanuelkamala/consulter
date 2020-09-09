@@ -1,8 +1,8 @@
-class Api::V1::MeetingsController < ApplicationController
+class MeetingsController < ApplicationController
   before_action :set_meeting, only: %i[show update destroy]
 
   def index
-    @meetings = current_user.meetings.all
+    @meetings = Meeting.all
     render json: MeetingSerializer.new(@meetings).serializable_hash
   end
 
@@ -10,9 +10,8 @@ class Api::V1::MeetingsController < ApplicationController
     render json: MeetingSerializer.new(@meeting).serializable_hash
   end
 
-  def create
+  def create    
     @meeting = Meeting.new(meeting_params)
-
     if @meeting.save
       render json: MeetingSerializer.new(@meeting).serializable_hash, status: :created
     else
@@ -35,10 +34,10 @@ class Api::V1::MeetingsController < ApplicationController
   private
 
   def set_meeting
-    @meeting = current_user.meetings.find(params[:id])
+    @meeting = Meeting.find(params[:id]) if current_user.id === user.id
   end
 
   def meeting_params
-    params.require(:meeting).permit(:name, :start_time, :end_time, :user_id)
+    params.require(:meeting).permit(:name, :start_time, :end_time, :consultant_id, :user_id)
   end
 end

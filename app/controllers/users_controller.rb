@@ -1,7 +1,6 @@
-class Api::V1::UsersController < ApplicationController
-  before_action :authenticate_user, except: [:create]
+class UsersController < ApplicationController
+  #before_action :authenticate_user, except: [:create]
   before_action :set_user, only: %i[show update destroy]
-  before_action :require_admin, only: %i[index destroy]
 
   def index
     @users = User.all
@@ -40,10 +39,6 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation)
-  end
-
-  def require_admin
-    render json: { error: "You're not alowed to perform this operation" } if current_user.admin == false
+    params.permit(:username, :email, :password, :password_confirmation)
   end
 end
