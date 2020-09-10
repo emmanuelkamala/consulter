@@ -25,6 +25,11 @@ Open your terminal or text editor and use next command
 
         Run 'bundle install' command to install package dependencies.
 
+## Set up the database
+After running 'bundle install', you need to run migrations to create the database tables. On the console run these commands in order:
+        rails db:setup
+        rails db:migrate
+
 ## Run the app
 
 To run the app and test the project; 

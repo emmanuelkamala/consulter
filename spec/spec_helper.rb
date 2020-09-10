@@ -92,6 +92,6 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 
-  config.include Requests::JsonHelpers, :type => :controller
-  config.include AuthHelpers, :type => :controller
+  #config.include Requests::JsonHelpers, :type => :controller
+  #config.include AuthHelpers, :type => :controller
 end
