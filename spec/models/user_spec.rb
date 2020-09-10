@@ -12,5 +12,11 @@ RSpec.describe User do
       user.email = 'ejoka'
       expect(user.email).to_not be true
     end
+
+    it 'is has to have a value of email' do
+      user = User.new(email: 'ejoka@hotmail.com', username: 'ejoka', password: 'tanzania')
+      user.email = ' '
+      expect(user.email).to_not be true
+    end
   end
 end
