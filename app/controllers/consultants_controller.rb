@@ -2,6 +2,7 @@ class ConsultantsController < ApplicationController
   before_action :authenticate_request!, except: %i[create login]
   before_action :is_confirmed?, only: [:login]
   before_action :set_consultant, only: %i[show update destroy]
+  before_action :require_admin, only: %i[index destroy]
   
   def login
     consultant = Consultant.find_by(email: consultant_params[:email].to_s.downcase)
@@ -67,5 +68,13 @@ class ConsultantsController < ApplicationController
     unless consultant.confirm
       render json: { error: "You are not confirmed. An Admin needs to confirm you. Sorry, Access denied" }
     end  
+  end
+
+  def require_admin
+    consultant = Consultant.find_by(email: consultant_params[:email].to_s.downcase)
+
+    unless consultant.admin
+      render json: { error: "You are not allowed to perform that action" }
+    end
   end
 end

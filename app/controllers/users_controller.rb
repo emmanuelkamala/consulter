@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_request!, except: %i[create login]
   before_action :is_confirmed?, only: [:login]
   before_action :set_user, only: %i[show update destroy]
+  before_action :require_admin, only: %i[index destroy]
 
   def login
     user = User.find_by(email: user_params[:email].to_s.downcase)
@@ -60,5 +61,13 @@ class UsersController < ApplicationController
     unless user.confirm
       render json: { error: "You are not confirmed. An Admin needs to confirm you. Sorry, Access denied" }
     end  
+  end
+
+  def require_admin
+    user = User.find_by(email: user_params[:email].to_s.downcase)
+
+    unless user.admin
+      render json: { error: "You are not allowed to perform that action" }
+    end
   end
 end
