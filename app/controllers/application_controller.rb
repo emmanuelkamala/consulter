@@ -1,22 +1,4 @@
 class ApplicationController < ActionController::API
-# before_action :authorize_request
-
-# include Response
-# include ExceptionHandler
-
-# attr_reader :current_user, :admin
-
-
-#   def admin?
-#     @admin = authorize_request[:admin]
-#     raise(ExceptionHandler::MissingToken, Message.unauthorized) unless @admin
-#   end
-  
-#   private
-
-#   def authorize_request
-#     @current_user = AuthorizeApiRequest.new(request.headers).call[:user] 
-#   end
 
 require 'json_web_token'
 
@@ -52,3 +34,22 @@ require 'json_web_token'
   end
 end
 
+
+# before_action :authorize_request
+
+# include Response
+# include ExceptionHandler
+
+# attr_reader :current_user, :admin
+
+
+#   def admin?
+#     @admin = authorize_request[:admin]
+#     raise(ExceptionHandler::MissingToken, Message.unauthorized) unless @admin
+#   end
+  
+#   private
+
+#   def authorize_request
+#     @current_user = AuthorizeApiRequest.new(request.headers).call[:user] 
+#   end

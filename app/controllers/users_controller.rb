@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   #before_action :authenticate_user, except: [:create]
   before_action :authenticate_request!, except: %i[create login]
   before_action :set_user, only: %i[show update destroy]
+  before_action :require_admin, only: %i[index create destroy]
   #before_action :admin?, only: %i[index destroy]
 
   def login
@@ -24,21 +25,10 @@ class UsersController < ApplicationController
     render json: UserSerializer.new(@user).serializable_hash
   end
 
-  # def create
-  #   @user = User.new(user_params)
-  #   if @user.save
-  #     render json: UserSerializer.new(@user).serializable_hash, status: :created
-  #   else
-  #     render json: @user.errors, status: :unprocessable_entity
-  #   end
-  # end
-
   def create
     @user = User.new(user_params)
-  
-    if @user.save && @user.authenticate(user_params[:password])
-      auth_token = JsonWebToken.encode(user_id: @user.id)
-      render json: { auth_token: auth_token }, status: :ok
+    if @user.save
+      render json: UserSerializer.new(@user).serializable_hash, status: :created
     else
       render json: @user.errors, status: :unprocessable_entity
     end
@@ -64,5 +54,11 @@ class UsersController < ApplicationController
 
   def user_params
     params.permit(:username, :email, :password, :password_confirmation)
+  end
+
+  def require_admin
+    if @user.admin === false
+       render json: { message: "You are not allowed to perform that action" }
+    end
   end
 end
