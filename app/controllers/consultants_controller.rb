@@ -1,6 +1,7 @@
 class ConsultantsController < ApplicationController
   #before_action :authenticate_v1_user
-  before_action :set_consultant, only: %[show update destroy]
+  before_action :set_consultant, only: %i[show update destroy]
+  before_action :admin?, except: %i[show update]
   
   # GET /consultants
   def index
