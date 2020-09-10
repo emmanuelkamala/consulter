@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   resources :consultants do  
     resources :meetings
+    collection do
+      post 'login'
+    end
   end
 
   resources :users do 
@@ -9,8 +12,5 @@ Rails.application.routes.draw do
       post 'login'
     end
   end
-
-  # post 'auth/signup', to:  'users#create'
-  # post 'auth/login', to: 'authentication#authenticate'
  
 end

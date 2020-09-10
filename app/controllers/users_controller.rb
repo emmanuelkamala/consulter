@@ -1,9 +1,7 @@
 class UsersController < ApplicationController
-  #before_action :authenticate_user, except: [:create]
   before_action :authenticate_request!, except: %i[create login]
+  before_action :is_confirmed?, only: [:login]
   before_action :set_user, only: %i[show update destroy]
-  before_action :require_admin, only: %i[index create destroy]
-  #before_action :admin?, only: %i[index destroy]
 
   def login
     user = User.find_by(email: user_params[:email].to_s.downcase)
@@ -53,12 +51,14 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.permit(:username, :email, :password, :password_confirmation)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
 
-  def require_admin
-    if @user.admin === false
-       render json: { message: "You are not allowed to perform that action" }
-    end
+  def is_confirmed?
+    user = User.find_by(email: user_params[:email].to_s.downcase)
+
+    unless user.confirm
+      render json: { error: "You are not confirmed. An Admin needs to confirm you. Sorry, Access denied" }
+    end  
   end
 end

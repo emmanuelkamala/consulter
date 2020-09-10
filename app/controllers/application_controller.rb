@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::API
-
 require 'json_web_token'
 
   protected
@@ -33,23 +32,3 @@ require 'json_web_token'
     @current_user = User.find_by(id: payload[0]['user_id'])
   end
 end
-
-
-# before_action :authorize_request
-
-# include Response
-# include ExceptionHandler
-
-# attr_reader :current_user, :admin
-
-
-#   def admin?
-#     @admin = authorize_request[:admin]
-#     raise(ExceptionHandler::MissingToken, Message.unauthorized) unless @admin
-#   end
-  
-#   private
-
-#   def authorize_request
-#     @current_user = AuthorizeApiRequest.new(request.headers).call[:user] 
-#   end

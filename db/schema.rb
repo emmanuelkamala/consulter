@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_09_213909) do
+ActiveRecord::Schema.define(version: 2020_09_10_092418) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2020_09_09_213909) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "profession"
+    t.boolean "confirm", default: false
   end
 
   create_table "meetings", force: :cascade do |t|
@@ -44,6 +45,7 @@ ActiveRecord::Schema.define(version: 2020_09_09_213909) do
     t.string "password_digest"
     t.string "email"
     t.boolean "admin"
+    t.boolean "confirm", default: false
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
