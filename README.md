@@ -2,7 +2,7 @@
 
 The project is based on an app to book an appointment for consultation with a Doctor. A patient can sign up and see selected dates and times for creating a consultation appointment with a Doctor. The Patient can then be able to edit, update dates and times and also delete an appointment. This is simply an API that can be used to create data for different patients.
 
-![screenshot](./ERD.png)
+![screenshot](./docs/ERD.png)
 
 
 ## Built With
