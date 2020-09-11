@@ -10,46 +10,103 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_10_095940) do
+ActiveRecord::Schema.define(version: 2020_03_25_231121) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "consultants", force: :cascade do |t|
+  create_table "accounts", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "email"
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "profession"
-    t.boolean "confirm", default: false
-    t.boolean "admin", default: false
+    t.string "role_type", null: false
+    t.bigint "role_id", null: false
+    t.index ["role_type", "role_id"], name: "index_accounts_on_role_type_and_role_id"
   end
 
-  create_table "meetings", force: :cascade do |t|
-    t.string "name"
-    t.datetime "start_time"
-    t.datetime "end_time"
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "appointments", force: :cascade do |t|
+    t.datetime "date"
+    t.bigint "doctor_id", null: false
+    t.bigint "patient_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "consultant_id", null: false
-    t.bigint "user_id", null: false
-    t.index ["consultant_id"], name: "index_meetings_on_consultant_id"
-    t.index ["user_id"], name: "index_meetings_on_user_id"
+    t.index ["doctor_id", "patient_id"], name: "index_appointments_on_doctor_id_and_patient_id", unique: true
+    t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
+    t.index ["patient_id"], name: "index_appointments_on_patient_id"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "username"
+  create_table "doctor_likes", force: :cascade do |t|
+    t.bigint "doctor_id", null: false
+    t.bigint "patient_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "password_digest"
-    t.string "email"
-    t.boolean "admin"
-    t.boolean "confirm", default: false
-    t.index ["username"], name: "index_users_on_username", unique: true
+    t.index ["doctor_id", "patient_id"], name: "index_doctor_likes_on_doctor_id_and_patient_id", unique: true
+    t.index ["doctor_id"], name: "index_doctor_likes_on_doctor_id"
+    t.index ["patient_id"], name: "index_doctor_likes_on_patient_id"
   end
 
-  add_foreign_key "meetings", "consultants"
-  add_foreign_key "meetings", "users"
+  create_table "doctor_reviews", force: :cascade do |t|
+    t.bigint "patient_id", null: false
+    t.bigint "doctor_id", null: false
+    t.text "review"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["doctor_id", "patient_id"], name: "index_doctor_reviews_on_doctor_id_and_patient_id", unique: true
+    t.index ["doctor_id"], name: "index_doctor_reviews_on_doctor_id"
+    t.index ["patient_id"], name: "index_doctor_reviews_on_patient_id"
+  end
+
+  create_table "doctors", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "speciality_id", null: false
+    t.integer "years_of_experience", default: 1, null: false
+    t.integer "fees", default: 100, null: false
+    t.integer "likes_count", default: 0, null: false
+    t.index ["speciality_id"], name: "index_doctors_on_speciality_id"
+  end
+
+  create_table "patients", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "specialities", force: :cascade do |t|
+    t.string "speciality"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "appointments", "doctors"
+  add_foreign_key "appointments", "patients"
+  add_foreign_key "doctor_likes", "doctors"
+  add_foreign_key "doctor_likes", "patients"
+  add_foreign_key "doctor_reviews", "doctors"
+  add_foreign_key "doctor_reviews", "patients"
+  add_foreign_key "doctors", "specialities"
 end
