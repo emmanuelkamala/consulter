@@ -1,37 +1,15 @@
 require 'rails_helper'
 
-RSpec.describe Meeting do
-  describe 'attributes' do
-    # it 'is valid with valid attributes' do
-    #   meeting = Meeting.new(name: 'Social anxiety help',
-    #                         start_time: '2020-09-09 11:00',
-    #                         end_time: '2020-09-09 11:30',
-    #                         user_id: 1,
-    #                         consultant_id: 2
-    #                         )
-    #   expect(meeting).to be_valid
-    # end
-
-    it 'is valid with valid name' do
-      meeting = Meeting.new(name: 'Social anxiety help',
-                            start_time: '2020-09-08 13:00',
-                            end_time: '2020-09-08 14:00',
-                            user_id: 1,
-                            consultant_id: 2
-                            )
-      meeting.name = 'Social anxiety help'
-      expect(meeting.name).to_not be true
-    end
-
-    it 'is valid with valid time' do
-      meeting = Meeting.new(name: 'Social anxiety help',
-                            start_time: '2020-09-07 12:00',
-                            end_time: '2020-09-07 13:00',
-                            user_id: 1,
-                            consultant_id: 2
-                            )
-      meeting.start_time = '2018-09-05 13:00'
-      expect(meeting.start_time).to_not be true
-    end
-  end
+RSpec.describe Meeting, type: :model do
+  # Association test
+  # ensure Todo model has a 1:m relationship with the Item model
+  it { should belong_to(:user) }
+  it { should belong_to(:consultant) }
+  # Validation tests
+  # ensure columns title and created_by are present before saving
+  it { should validate_presence_of(:name) }
+  it { should validate_presence_of(:start_time) }
+  it { should validate_presence_of(:end_time) }
+  it { should validate_presence_of(:user_id) }
+  it { should validate_presence_of(:consultant_id) }
 end
