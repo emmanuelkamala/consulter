@@ -7,7 +7,7 @@ The project is based on an app to book an appointment for consultation with a Do
 
 ## Built With
 
-- Ruby on rails
+- Ruby on rails 6.0.3
 - RSpec
 
 ## Documentation
