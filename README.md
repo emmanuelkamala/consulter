@@ -1,75 +1,79 @@
-# Edoc-API 
+# Backend Final Project: Meeting Appointment
 
-![screenshot](screenshot.jpg)
+The project is based on an app to book an appointment for consultation with a Doctor. A patient can sign up and see selected dates and times for creating a consultation appointment with a Doctor. The Patient can then be able to edit, update dates and times and also delete an appointment. This is simply an API that can be used to create data for different patients.
 
-Check out [front end](https://github.com/mosaaleb/edoc)
+![screenshot](./app/ERD.png)
 
-## Introduction
-This is the backend of the capstone project in [Microverse](https://www.microverse.org/) curriculum
-The project handles searching physicians by their specialty and handles creating appointments with patients.
-
-It serves frontend React application
-
-react app: [edoc](https://github.com/mosaaleb/edoc/)
-
-**Features**
-- Mobile app.
-- Authentication with JWT.
-- Filtering physicians by category.
-- Creating appointments with physicians.
-- Leaving upvotes and reviews.
 
 ## Built With
-- Rails 6.0.2
-- Rspec
 
-### Prerequisites
-- ruby 2.6.3
-- bundle
+- Ruby on rails
+- RSpec
 
-### Setup
-```
-git clone git@github.com:mosaaleb/edoc-api.git
-cd edoc
-rails db:create db:migrate db:seed
-```
+## Documentation
 
-### Running the project
-- Clone the [front end](https://github.com/mosaaleb/edoc).
-- Follow the instruction on how to set up the frontend.
-- Setup the back end part (check the Setup section).
-- Start the server on both the backend and frontend.
-```ruby
-# back end Rails
-rails s
-# front end react
-npm start
-```
-- Start developing.
+[Documentation of the API](https://documenter.getpostman.com/view/12161529/TVCiTRdm#d8e3a480-62ea-4c81-972b-b3569fb0dbf4/)
 
-### Testing
-The app is fully tested with `1:1.2` Code to Test Ratio
-You can run all unit tests with:
-`rspec`
 
-## Author
+## Getting Started
 
-- [Github](https://github.com/mosaaleb)
-- [Linkedin](https://www.linkedin.com/in/muhammadebeid/)
-- [muhammed.ebeid@gmail.com](muhammed.ebeid@gmail.com)
+Open your terminal or text editor and use next command
 
-## Coming Features:
-- [ ] Doctor profile page endpoint
+        git clone https://github.com/emmanuelkamala/consulter.git
 
-**Having a specific feature in mind?** 
-Please [Submit](https://github.com/mosaaleb/edoc-api/labels/enhancement) it
+        cd consulter
 
+        Run 'bundle install' command to install package dependencies.
+
+## Set up the database
+After running 'bundle install', you need to run migrations to create the database tables. On the console run these commands in order:
+
+
+        rails db:setup
+
+        rails db:migrate
+
+
+## Run the app
+
+To run the app and test the project; 
+You will need a REST Client to test the endpoints. And for that I will recommend [Postman](https://postman.com/).
+
+After downloading postman and installing it, then go to the root of the app enter this command on the command line:
+'rails start'
+
+Then open postman and use this link to start accessing the app:
+http://localhost:3000/
+
+After if you want to do any changes please create new branch, after changes open pull request.
+Happy coding! 
+
+
+
+## Authors
+
+
+👤 **Author1**
+
+- Github: [emmanuelkamala](https://github.com/emmanuelkamala)
+- Twitter: [ejkamala](https://twitter.com/ejkamala)
+- Linkedin: [emmanuelkamala](https://linkedin.com/in/emmanuelkamala)
 
 ## 🤝 Contributing
-Contributions, issues, and feature requests are welcome!
+
+Contributions, issues and feature requests are welcome!
 
 Feel free to check the [issues page](issues/).
 
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+- The odin project
+- Microverse tips
 
 ## 📝 License
+
 This project is [MIT](lic.url) licensed.
