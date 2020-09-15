@@ -1,3 +1,19 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  post 'authenticate', to: 'authentications#authenticate'
+  resources :doctors, only: %i[index show] do
+    member do
+      post 'like', to: 'doctor_likes#create'
+      delete 'dislike', to: 'doctor_likes#destroy'
+    end
+  end
+  resources :specialities, only: [:index]
+
+  resources :specialities do
+    resources :doctors, only: %i[index show]
+  end
+
+  resources :patients, only: [:create]
+  resources :appointments, only: %i[index create destroy]
 end
