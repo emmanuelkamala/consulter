@@ -53,7 +53,7 @@ Happy coding!
 ## Author
 
 
-👤 **Author1**
+👤 **Author**
 
 - Github: [emmanuelkamala](https://github.com/emmanuelkamala)
 - Twitter: [ejkamala](https://twitter.com/ejkamala)
