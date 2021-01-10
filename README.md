@@ -36,13 +36,13 @@ After running 'bundle install', you need to run migrations to create the databas
 
 ## Run the app
 
-To run the app and test the project; 
-You will need a REST Client to test the endpoints. And for that I will recommend [Postman](https://postman.com/).
+### To run the app and test the project; 
+> You will need a REST Client to test the endpoints. And for that I will recommend [Postman](https://postman.com/).
 
-After downloading postman and installing it, then go to the root of the app enter this command on the command line:
+> After downloading postman and installing it, then go to the root of the app enter this command on the command line:
 'rails start'
 
-Then open postman and use this link to start accessing the app:
+> Then open postman and use this link to start accessing the app:
 http://localhost:3000/
 
 After if you want to do any changes please create new branch, after changes open pull request.
