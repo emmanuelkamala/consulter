@@ -19,19 +19,18 @@ The project is based on an app to book an appointment for consultation with a Do
 
 Open your terminal or text editor and use next command
 
-        git clone https://github.com/emmanuelkamala/consulter.git
+### git clone https://github.com/emmanuelkamala/consulter.git
 
-        cd consulter
+### cd consulter
 
-        Run 'bundle install' command to install package dependencies.
+### Run 'bundle install' command to install package dependencies.
 
 ## Set up the database
 After running 'bundle install', you need to run migrations to create the database tables. On the console run these commands in order:
 
+### rails db:setup
 
-        rails db:setup
-
-        rails db:migrate
+### rails db:migrate
 
 
 ## Run the app
